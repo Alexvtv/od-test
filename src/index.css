@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Lab-Grotesque';
+  font-weight: 400;
+  src: local('Lab-Grotesque'), url(./fonts/LabGrotesque/LabGrotesque-Regular.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Lab-Grotesque';
+  font-weight: 500;
+  src: local('Lab-Grotesque'), url(./fonts/LabGrotesque/LabGrotesque-Medium.ttf) format('opentype');
+}

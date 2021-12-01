@@ -1,0 +1,10 @@
+.app {
+  min-height: 100vh;
+  position: relative;
+  font-family: 'Lab-Grotesque', serif;
+  box-sizing: border-box;
+
+  input, button {
+    outline: none!important;
+  }
+}
