@@ -4,7 +4,6 @@ import {endingResolver} from './utils';
 import styles from './result.module.scss';
 
 export const Result = ({data}) => {
-    console.log(data);
 
     return (
         <div className={styles.result}>

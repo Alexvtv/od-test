@@ -34,8 +34,9 @@ export const Salary = ({setResult}) => {
         const numbersArr = salary.split('');
         const onesArrayLength = numbersArr.filter(num => num === '1').length;
         const numbersWidth = onesArrayLength * 6 + ((numbersArr.length - onesArrayLength) * 8.3);
+        const spacesWidth = Math.trunc((numbersArr.length - 1) / 3) * 3;
 
-        return `${20 + + numbersWidth}px`;
+        return `${20 + numbersWidth + spacesWidth}px`;
     }
 
     return (
@@ -46,7 +47,7 @@ export const Salary = ({setResult}) => {
                     ? styles.error
                     : salary.length === 0 ? styles.empty : ''}
                 placeholder={isInputError ? '' : 'Введите данные'}
-                value={salary}
+                value={salary ? Number(salary).toLocaleString('ru') : ''}
                 onChange={e => changeInputValue(e.target.value)}/>
             {salary.length > 0
                 ? <span
