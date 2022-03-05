@@ -18,8 +18,6 @@ export const Salary = ({setResult}) => {
         }
     };
 
-    console.log('render');
-
     const changeInputValue = value => {
         const preparedString = value.replace(/[^0-9]/g, '');
         setIsInputError(false);
