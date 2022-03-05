@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
 
 import styles from '../../popup.module.scss';
 
@@ -11,22 +10,20 @@ export const Salary = ({setResult}) => {
         if (salary) {
             const deduction = 260000;
             const annualDeduction = (Number(salary) * 12) * 0.13;
+            const result = [...new Array(Math.trunc(deduction / annualDeduction)).fill(annualDeduction), deduction % annualDeduction];
 
-            ReactDOM.unstable_batchedUpdates(() => {
-                setSalary('');
-                setResult([...new Array(Math.trunc(deduction / annualDeduction)).fill(annualDeduction), deduction % annualDeduction]);
-            });
+            setResult(result);
         } else {
             setIsInputError(true);
         }
     };
 
+    console.log('render');
+
     const changeInputValue = value => {
         const preparedString = value.replace(/[^0-9]/g, '');
-        ReactDOM.unstable_batchedUpdates(() => {
-            setIsInputError(false);
-            if (preparedString.length < 11) setSalary((Number(preparedString) > 0) ? preparedString : '');
-        });
+        setIsInputError(false);
+        if (preparedString.length < 11) setSalary((Number(preparedString) > 0) ? preparedString : '');
     };
 
     //Костыль, расчёт отступа символа валюты слева
@@ -37,7 +34,7 @@ export const Salary = ({setResult}) => {
         const spacesWidth = Math.trunc((numbersArr.length - 1) / 3) * 3;
 
         return `${20 + numbersWidth + spacesWidth}px`;
-    }
+    };
 
     return (
         <div className={styles.salary}>
@@ -57,5 +54,5 @@ export const Salary = ({setResult}) => {
             {isInputError ? <p className={styles.errorMsg}>Поле обязательно для заполнения</p> : null}
             <button onClick={calculateResult}>Рассчитать</button>
         </div>
-    )
-}
+    );
+};
